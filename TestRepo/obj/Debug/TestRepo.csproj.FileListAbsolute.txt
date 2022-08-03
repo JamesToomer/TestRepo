@@ -1,0 +1,7 @@
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\obj\Debug\TestRepo.csproj.AssemblyReference.cache
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\obj\Debug\TestRepo.csproj.CoreCompileInputs.cache
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\bin\Debug\TestRepo.exe.config
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\bin\Debug\TestRepo.exe
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\bin\Debug\TestRepo.pdb
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\obj\Debug\TestRepo.exe
+C:\Users\4400114478\Source\Repos\TestRepo\TestRepo\obj\Debug\TestRepo.pdb
