@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\XunitTestProject\\XunitTestProject.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\CalculatorDemo\\CalculatorDemo.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\CalculatorDemo\\CalculatorDemo.csproj",
+        "projectName": "CalculatorDemo",
+        "projectPath": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\CalculatorDemo\\CalculatorDemo.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\XunitTestProject\\XunitTestProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\XunitTestProject\\XunitTestProject.csproj",
+        "projectName": "XunitTestProject",
+        "projectPath": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\XunitTestProject\\XunitTestProject.csproj",
+        "packagesPath": "C:\\Users\\4400114478\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\XunitTestProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\4400114478\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\CalculatorDemo\\CalculatorDemo.csproj": {
+                "projectPath": "C:\\Users\\4400114478\\Source\\Repos\\TestRepo\\UnitTestLesson\\CalculatorDemo\\CalculatorDemo.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
