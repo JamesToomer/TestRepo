@@ -48,7 +48,7 @@ namespace TestRepo
             Console.WriteLine($"Circumference is {2 * Math.PI * r}");
             Console.WriteLine($"Area is {Math.PI * (r * r)}");
         }
-        static void Main(string[] args)
+        static void InvoiceAssignment()
         {
             void Display(Invoice ToDisplay)
             {
@@ -61,9 +61,73 @@ namespace TestRepo
             }
 
             Display(new Invoice("AB001", "Test Item", 5, 125.23));
-
+        }
+        static void comassignment()
+        {
+            Item i1 = new Item(1, (decimal)239.99);
+            Item i2 = new Item(2, (decimal)129.75);
+            Item i3 = new Item(3, (decimal)99.95);
+            Item i4 = new Item(4, (decimal)350.89);
+            Item[] Items = { i1, i2, i3, i4 };
+            decimal TotalCom = 200;
+            Console.WriteLine("Please Enter the number of items sold for each type: ");
+            foreach(Item i in Items)
+            {
+                Console.Write($"Item {i.GetID()} (Commission Value: {i.GetCom()}): ");
+                TotalCom += int.Parse(Console.ReadLine()) * i.GetCom();
+            }
+        
+        }
+        static void Main(string[] args)
+        {
+            int asterisks = 1;
+            for(int i = 0; i < 4; i++)
+            {
+                for (int k = 4-(asterisks/2); k > 0; k--)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < asterisks; j++)
+                {
+                    Console.Write("*");
+                }
+                
+                asterisks += 2;
+                Console.Write("\n");
+            }
+            while(asterisks > 0)
+            {
+                for (int k = 4 - (asterisks/2); k > 0; k--)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < asterisks; j++)
+                {
+                    Console.Write("*");
+                }
+                asterisks -= 2;
+                Console.Write("\n");
+            }
         }
 
+    }
+    public class Item
+    {
+        int _id;
+        decimal _value;
+        public Item(int ID, decimal Cost)
+        {
+            _id = ID;
+            _value = Cost;
+        }
+        public int GetID()
+        {
+            return _id;
+        }
+        public decimal GetCom()
+        {
+            return ((decimal)_value) * (decimal).09;
+        }
     }
     public class Invoice
     { 
