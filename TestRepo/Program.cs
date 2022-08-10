@@ -78,36 +78,81 @@ namespace TestRepo
             }
         
         }
+        public class AutoPolicy
+        {
+            public int accountNumber;
+            public string makeAndModel;
+            string _state;
+            public string State
+            {
+                get => _state;
+                set
+                {
+                    _state = value;
+                }
+
+            }
+            public AutoPolicy(int Account, string MakeModel, string State)
+            {
+                accountNumber = Account;
+                makeAndModel = MakeModel;
+                _state = State;
+            }
+
+            public bool IsNoFaultState
+            {
+                get
+                {
+                    if(_state.Equals("CT")||_state.Equals("MA") ||_state.Equals("ME") ||_state.Equals("NH") ||_state.Equals("NJ") ||_state.Equals("NY") ||_state.Equals("PA") ||_state.Equals("VT"))
+                    { 
+                        bool noFaultState;
+
+                        switch (_state)
+                        {
+                            case "MA": case "NJ": case "NY": case "PA":
+                                noFaultState = true;
+                                break;
+                            default:
+                                noFaultState = false;
+                                break;
+                        }
+                        
+                        return noFaultState;
+                    }
+                    else { Console.WriteLine($"Policy: #{accountNumber} cannot have their state set to {State}"); return false;}
+                }
+
+            }
+        }
+        static void PolicyAssignment()
+        {
+            //create two AutoPolicy objects
+            AutoPolicy policy1 = new AutoPolicy(11111111, "Toyota Camry", "NJ");
+            AutoPolicy policy2 = new AutoPolicy(22222222, "Ford Fusion", "ME");
+            Console.WriteLine(Math.Pow(6, 5));
+            void PolicyInNoFaultState(AutoPolicy Pol)
+            {
+                Console.WriteLine($"The Auto Policy:\n Account #{Pol.accountNumber}; Car: {Pol.makeAndModel}\nState: {Pol.State} {(Pol.IsNoFaultState ? "is" : "is not")} a no-fault state");
+            }
+
+            PolicyInNoFaultState(policy1);
+            PolicyInNoFaultState(policy2);
+        }
+        public static double toCelsius(double TempF)
+        {
+            return 5.0 / 9.0 * (TempF - 32);
+        }
+        public static double toFarenheit(double TempC)
+        {
+            return 9.0/5.0*TempC+32;
+        }
         static void Main(string[] args)
         {
-            int asterisks = 1;
-            for(int i = 0; i < 4; i++)
-            {
-                for (int k = 4-(asterisks/2); k > 0; k--)
-                {
-                    Console.Write(" ");
-                }
-                for (int j = 0; j < asterisks; j++)
-                {
-                    Console.Write("*");
-                }
-                
-                asterisks += 2;
-                Console.Write("\n");
-            }
-            while(asterisks > 0)
-            {
-                for (int k = 4 - (asterisks/2); k > 0; k--)
-                {
-                    Console.Write(" ");
-                }
-                for (int j = 0; j < asterisks; j++)
-                {
-                    Console.Write("*");
-                }
-                asterisks -= 2;
-                Console.Write("\n");
-            }
+            Console.WriteLine("Please Enter Desired unit (C/F)");
+            string userin = Console.ReadLine();
+            double temp;
+            if (userin.Equals("C")) { Console.WriteLine("Now enter the temperature in Farenheit"); temp = toCelsius(double.Parse(Console.ReadLine())); Console.WriteLine($"The temperature in Celsius is {temp}"); }
+            else if (userin.Equals("F")) { Console.WriteLine("Now enter the temperature in Celsius"); temp = toFarenheit(double.Parse(Console.ReadLine())); Console.WriteLine($"The temperature in Farenheit is {temp}"); }
         }
 
     }
