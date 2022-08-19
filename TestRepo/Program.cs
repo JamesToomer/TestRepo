@@ -48,7 +48,7 @@ namespace TestRepo
             Console.WriteLine($"Circumference is {2 * Math.PI * r}");
             Console.WriteLine($"Area is {Math.PI * (r * r)}");
         }
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             void Display(Invoice ToDisplay)
             {
@@ -62,7 +62,7 @@ namespace TestRepo
 
             Display(new Invoice("AB001", "Test Item", 5, 125.23));
 
-        }
+        }*/
 
     }
     public class Invoice
