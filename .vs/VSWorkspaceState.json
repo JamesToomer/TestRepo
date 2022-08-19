@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TestRepo",
+    "\\TestRepo\\obj",
+    "\\TestRepo\\Properties"
   ],
-  "SelectedNode": "\\Arithmetic.cs",
+  "SelectedNode": "\\TestRepo\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
