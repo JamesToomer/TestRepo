@@ -49,6 +49,7 @@ namespace TestRepo
             Console.WriteLine($"Area is {Math.PI * (r * r)}");
         }
         /*static void InvoiceAssignment()
+        /*static void Main(string[] args)
         {
             void Display(Invoice ToDisplay)
             {
@@ -239,6 +240,8 @@ namespace TestRepo
         }
     }
 
+        }*/
+
 
 
     public class Item
@@ -260,6 +263,8 @@ namespace TestRepo
         }
     }
     public class oldInvoice
+    }
+    public class Invoice
     { 
         //string Number{ get { return ""; } set{ Number = "Num: " } };
         string Number;
