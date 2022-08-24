@@ -8,7 +8,7 @@ namespace TestRepo
 {
     class Inheritance
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             Account basic = new Account(5.00m);
             SavingsAccount savings = new SavingsAccount(15.00m, 0.05m);
@@ -29,7 +29,7 @@ namespace TestRepo
             Console.WriteLine("Savings: " + savings.Balance);
             checking.Credit(5.00m);
             Console.WriteLine($"Interest (1%): {savings.CalculateInterest()}");
-        }
+        }*/
     }
     public class Account
     {

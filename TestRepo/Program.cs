@@ -85,51 +85,7 @@ namespace TestRepo
         }
         static void LINQ()
         {
-            Invoice[] invoices = new Invoice[8];
-            invoices[0] = new Invoice(83, "Electric sander", 7, 59.98m);
-            invoices[1] = new Invoice(24, "Power saw", 7, 99.99m);
-            invoices[2] = new Invoice(7, "Sledge hammer", 7, 21.50m);
-            invoices[3] = new Invoice(77, "Hammer", 7, 11.99m);
-            invoices[4] = new Invoice(39, "Lawn mower", 7, 79.50m);
-            invoices[5] = new Invoice(68, "Screwdriver", 7, 6.99m);
-            invoices[6] = new Invoice(56, "Jig saw", 7, 11.00m);
-            invoices[7] = new Invoice(3, "Wrench", 7, 7.50m);
-            var PartDesc =
-                from Invoice i in invoices
-                orderby i.PartDescription descending
-                select i;
-            var Price =
-                from Invoice i in invoices
-                orderby i.Price descending
-                select i;
-            var Quantity =
-                from Invoice i in invoices
-                orderby i.Quantity descending
-                select (i.PartDescription, i.Quantity);
-            var TotalCost =
-                from Invoice i in invoices
-                let InvoiceTotal = i.Price * i.Quantity
-                orderby InvoiceTotal descending
-                select new { i.PartDescription, InvoiceTotal };
-            var InRange =
-                from i in TotalCost
-                where (i.InvoiceTotal < 500 && i.InvoiceTotal > 200)
-                select i;
-            Console.WriteLine(InRange.GetType().ToString() + "\n\n\n");
-            Console.WriteLine("Original:");
-            foreach (var i in invoices) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nSorted by description:");
-            foreach (var i in PartDesc) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nSorted by price:");
-            foreach (var i in Price) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nSorted by Quantity:");
-            foreach (var i in Quantity) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nSorted by total cost of items:");
-            foreach (var i in TotalCost) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nSorted by total cost of items:");
-            foreach (var i in TotalCost) { Console.WriteLine($"{i}"); }
-            Console.WriteLine("\nBetween $200 and $500:");
-            foreach (var i in InRange) { Console.WriteLine($"{i}"); }
+            
         }
         static void States()
         {
@@ -157,38 +113,74 @@ namespace TestRepo
             foreach (char d in unique) { Console.Write(d); }
             Console.WriteLine();
         }
-        static void Main(string[] args)
+        static void Shapes()
         {
             Shape[] Shapes = { new Circle { Radius = 5 }, new Square { SideLength = 10 }, new Sphere { Radius = 7 }, new Cube { SideLength = 3 } };
             int i = 1;
-            foreach(Shape s in Shapes)
+            foreach (Shape s in Shapes)
             {
-                if(s is Shape2D) 
-                { 
-                    Console.Write($"{i} - {s.GetType()} (2D Shape): "); 
-                    if(s is Circle) { Console.WriteLine($"Radius is {(s as Circle).Radius} | Area is {(s as Circle).Area}"); }
+                if (s is Shape2D)
+                {
+                    Console.Write($"{i} - {s.GetType()} (2D Shape): ");
+                    if (s is Circle) { Console.WriteLine($"Radius is {(s as Circle).Radius} | Area is {(s as Circle).Area}"); }
                     if (s is Square) { Console.WriteLine($"Side Length is {(s as Square).SideLength} | Area is {(s as Square).Area}"); }
                 }
                 else if (s is Shape3D)
-                { 
+                {
                     Console.Write($"{i} - {s.GetType()} (3D Shape) ");
                     if (s is Sphere) { Console.WriteLine($"Radius is {(s as Sphere).Radius} | Area is {(s as Sphere).Area} | Volume is {(s as Sphere).Volume}"); }
                     if (s is Cube) { Console.WriteLine($"Side Length is {(s as Cube).SideLength} | Area is {(s as Cube).Area} | Volume is {(s as Cube).Volume}"); }
                 }
             }
-
         }
+        static void Main(string[] args)
+        {
+            Example e1 = new Example();
+            e1.Y = 5;
+            Example e2 = new Example();
+            try { e2.Y = -1; } 
+            catch(BasicException be) { Console.WriteLine($"Exception Caught: {be.GetType()}"); };
+            ExampleChild e3 = new ExampleChild();
+            try { e3.Y = -1; int i = 1; }
+            catch (BasicException be) { Console.WriteLine($"Exception Caught: {be.GetType()} {be}"); };
+
+            ExampleChild e4 = new ExampleChild();
+            e4.Y = -1;
+        }
+        public class Example
+        {
+            double _y = 0.1;
+            public double Y
+            {
+                get { return _y; }
+                set 
+                { 
+                    if (value > 0) { _y = value; }
+                    else { throw new BasicException($"Exception in {this.GetType()}: Y Cannot be set to a number less than zero"); } 
+                }
+            }
+        }
+        public class ExampleChild : Example { };
+
+
+    [System.Serializable]
+    public class BasicException : Exception
+    {
+        public BasicException() { }
+        public BasicException(string message) : base(message) { }
+            
     }
+}
     public abstract class Shape { }
     public abstract class Shape2D : Shape
     {
         public int a = 10;
         public abstract double Area
         {
-            get { return 0; }
+            get;
         }
     }
-    public abstract class Shape3D : Shape 
+    public abstract class Shape3D : Shape
     {
         public abstract double Area
         {
@@ -204,43 +196,42 @@ namespace TestRepo
         public double Radius;
         public override double Area
         {
-            get { return Math.PI*Math.Pow(Radius,2); }
+            get { return Math.PI * Math.Pow(Radius, 2); }
         }
     }
-    public  class Square : Shape2D
+    public class Square : Shape2D
     {
         public double SideLength;
         public override double Area
         {
-            get { return Math.Pow(SideLength,2); }
+            get { return Math.Pow(SideLength, 2); }
         }
     }
-    public  class Sphere : Shape3D
+    public class Sphere : Shape3D
     {
         public double Radius;
         public override double Area
         {
-            get { return 4*Math.PI*Math.Pow(Radius,2); }
+            get { return 4 * Math.PI * Math.Pow(Radius, 2); }
         }
         public override double Volume
         {
-            get { return (4/3)*Math.PI*(Radius*3); }
+            get { return (4 / 3) * Math.PI * (Radius * 3); }
         }
     }
-    public  class Cube : Shape3D
+    public class Cube : Shape3D
     {
         public double SideLength;
         public override double Area
         {
-            get { return 6*Math.Pow(SideLength,2); }
+            get { return 6 * Math.Pow(SideLength, 2); }
         }
         public override double Volume
         {
-            get { return Math.Pow(SideLength,3); }
+            get { return Math.Pow(SideLength, 3); }
         }
     }
 
-        }*/
 
 
 
@@ -262,90 +253,5 @@ namespace TestRepo
             return ((decimal)_value) * (decimal).09;
         }
     }
-    public class oldInvoice
-    }
-    public class Invoice
-    { 
-        //string Number{ get { return ""; } set{ Number = "Num: " } };
-        string Number;
-        string Description;
-        int Quantity;
-        double UnitPrice;
-        public oldInvoice(string PartNumber, string PartDescription, int PartQuantity, double price)
-        {
-            Number = PartNumber;
-            Description = PartDescription;
-            Quantity = PartQuantity;
-            UnitPrice = price;
-        }
-        public double CalculatePrice()
-        {
-            return Quantity * UnitPrice;
-        }
-        
-        public string GetPartNumber() { return Number; }
-        public string GetDescription() { return Description; }
-        public int GetQuantity() { return Quantity; }
-        public double GetUnitPrice() { return UnitPrice; }
-        public void SetPartNumber(string NewNumber) { Number = NewNumber; }
-        public void SetDescription(string NewDescription) { Description = NewDescription; }
-        public void SetUnitPrice(double NewPrice) { if (NewPrice > 0) { UnitPrice = NewPrice; } }
-        public void SetQuantity(int NewQuantity) { if (NewQuantity > 0) { Quantity = NewQuantity; } }
-    }
-public class Invoice
-    {
-        // declare variables for Invoice object
-        private int quantityValue;
-        private decimal priceValue;
-        // auto-implemented property PartNumber
-        public int PartNumber { get; set; }
-        // auto-implemented property PartDescription
-        public string PartDescription { get; set; }
-        // four-argument constructor
-        public Invoice(int part, string description,
-           int count, decimal pricePerItem)
-        {
-            PartNumber = part;
-            PartDescription = description;
-            Quantity = count;
-            Price = pricePerItem;
-        }
-        // property for quantityValue; ensures value is positive
-        public int Quantity
-        {
-            get
-            {
-                return quantityValue;
-            }
-            set
-            {
-                if (value > 0) // determine whether quantity is positive
-                {
-                    quantityValue = value; // valid quantity assigned
-                }
-            }
-        }
-        // property for pricePerItemValue; ensures value is positive
-        public decimal Price
-        {
-            get
-            {
-                return priceValue;
-            }
-            set
-            {
-                if (value >= 0M) // determine whether price is non-negative
-                {
-                    priceValue = value; // valid price assigned
-                }
-            }
-        }
-        // return string containing the fields in the Invoice in a nice format
-        public override string ToString()
-        {
-            // left justify each field, and give large enough spaces so
-            // all the columns line up
-            return $"{PartNumber,-5} {PartDescription,-20} {Quantity,-5} {Price,6:C}";
-        }
-    }
 }
+
