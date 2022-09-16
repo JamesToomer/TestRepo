@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace TestRepo
 {
     using System;
+    using System.Text.RegularExpressions;
+
     class Program
     {
         static void Arithmetic()
@@ -135,17 +137,19 @@ namespace TestRepo
         }
         static void Main(string[] args)
         {
-            Example e1 = new Example();
-            e1.Y = 5;
-            Example e2 = new Example();
-            try { e2.Y = -1; } 
-            catch(BasicException be) { Console.WriteLine($"Exception Caught: {be.GetType()}"); };
-            ExampleChild e3 = new ExampleChild();
-            try { e3.Y = -1; int i = 1; }
-            catch (BasicException be) { Console.WriteLine($"Exception Caught: {be.GetType()} {be}"); };
-
-            ExampleChild e4 = new ExampleChild();
-            e4.Y = -1;
+            Stack<char> word = new Stack<char>();
+            string input = Console.ReadLine();
+            foreach (char c in input.ToCharArray())
+            {
+                word.Push(c);
+            }
+            Console.WriteLine();
+            foreach (char c in word)
+            {
+                word.p
+                Console.Write(c);
+            }
+            Console.WriteLine();
         }
         public class Example
         {
